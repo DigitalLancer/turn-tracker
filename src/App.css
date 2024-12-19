@@ -1,0 +1,112 @@
+.container {
+    padding: 25px;
+}
+
+.title {
+    color: #FFEF82;
+    font-family: "Uncial Antiqua", serif;
+    font-family: "Marcellus", serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.input-container {
+    width: 100%;
+    border-bottom: 3px solid #FFEF82;
+    padding-bottom: 10px;
+}
+
+.input-container h2 {
+    color: #f7f0c6;
+    font-family: "DM Sans", serif;
+    font-weight: 400;
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: 5fr 2fr 1fr 1fr;
+    gap: 2px;
+    margin: 5px 0;
+}
+
+.input {
+    padding: 8px;
+    width: 100%;
+    border: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-container button {
+    font-family: "Marcellus", serif;
+    font-weight: bold;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: none;
+    margin: 10px 0;
+    background: #095c6f;
+    color: white;
+}
+.list {
+    padding: 20px 10px;
+}
+.control-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+.control-btn{
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-right: 10px;
+    background: #0c2c0c;
+}
+.next{
+    border: 2px solid #5dbe13 ;
+    border: 2px solid #095c6f;
+    color: white;
+}
+.back{
+    border: 2px solid #9c1010 ;
+    border: 2px solid #095c6f;
+    color: white;
+}
+.sort{
+    background: #0c2c0c;
+    border: 2px solid rgb(255, 230, 0) ;
+    color: white;
+}
+.clear{
+    background: #0c2c0c;
+    border: 2px solid #9c1010 ;
+    color: white;  
+}
+.list h1{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin: 20px 0;
+}
+li {
+    line-height: 32px;
+    /* Match the list-element height */
+}
+li::marker{
+    color: white;
+}
+.attributes{
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr 2fr;
+}
+.attributes h2{
+    text-align: center;
+    font-size: 1.1em;
+    color: #FFEF82;
+    text-decoration: underline;
+    display: inline-block;
+}

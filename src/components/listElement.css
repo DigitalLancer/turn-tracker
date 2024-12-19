@@ -1,0 +1,23 @@
+.list-element{
+    width: 100%;
+    background: rgb(145, 145, 145);
+    border-radius: 8px;
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr 2fr;
+    text-align: center;
+    gap: 2px;
+    
+}
+.element-attribute{
+    background: wheat;
+    border: none;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 1.1em;
+    width: 100%;
+    padding: 6px 0;
+}
+.active{
+    background: rgb(203, 177, 5);
+}

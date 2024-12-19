@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Marcellus&display=swap');
+html {
+  height: 100%
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: rgb(21, 79, 21);
+  background: radial-gradient(#154f15,#0c2c0c);
+}
+*:focus {
+  outline: 2px solid rgb(255, 255, 255);
+  outline: none;
+}
