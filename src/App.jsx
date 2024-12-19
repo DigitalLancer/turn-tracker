@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ListElement from './components/ListElement'
-
+import deleteIcon from './images/delete_icon.svg'
 
 function App() {
   const [elements, setElements] = useState([]);
@@ -36,12 +36,17 @@ function App() {
     console.log(elements)
   }
   function handleNextTurn() {
-    if (turn < elements.length - 1) {
-      setTurn(turn + 1);
+    if (elements.length > 0) {
+      if (turn < elements.length - 1) {
+        setTurn(turn + 1);
+      }
+      else {
+        setTurn(0);
+        setRound(round + 1);
+      }
     }
     else {
-      setTurn(0);
-      setRound(round + 1);
+      alert("Please add a character first");
     }
   }
   function handeBackTurn() {
@@ -53,10 +58,14 @@ function App() {
     const newArray = [...elements].sort((a, b) => b.initiative - a.initiative);
     setElements(newArray);
   }
-  function clearTurnOrder() {
+  function clearTurnOrder(index) {
     setTurn(0);
     setElements([]);
     setRound(1);
+  }
+  function handleDeleteElement(index) {
+    const newList = elements.filter((element, i) => i !== index);
+    setElements(newList);
   }
 
   return (
@@ -69,9 +78,9 @@ function App() {
           </h2>
           <div className='input-grid'>
             <input type="text" className='input' placeholder='Name' onChange={handleSetName} value={name} />
-            <input type="text" className='input' placeholder='Initiative' onChange={handleSetInit} value={initative} />
-            <input type="text" className='input' placeholder='HP' onChange={handleSetHp} value={hp} />
-            <input type="text" className='input' placeholder='AC' onChange={handleSetAc} value={ac} />
+            <input type="number" inputMode='numeric' className='input' placeholder='Initiative' onChange={handleSetInit} value={initative} />
+            <input type="number" inputMode='numeric' className='input' placeholder='HP' onChange={handleSetHp} value={hp} />
+            <input type="number" inputMode='numeric' className='input' placeholder='AC' onChange={handleSetAc} value={ac} />
           </div>
           <div className="button-container">
             <button type='submit' onClick={handleAddCharacter}>Submit</button>
@@ -100,23 +109,29 @@ function App() {
             {elements.map((element, index) => {
               if (index == turn) {
                 return (
-                  <li key={index}>
-                    <ListElement characterObject={element} turnActive={true} />
-                  </li>
+                  <div className="element-container">
+                    <li key={index}>
+                      <ListElement characterObject={element} turnActive={true} />
+                    </li>
+                    <button className='delete-btn'><img src={deleteIcon} alt="" onClick={() => handleDeleteElement(index)} /></button>
+                  </div>
                 )
               }
               else {
                 return (
-                  <li key={index}>
-                    <ListElement characterObject={element} turnActive={false} />
-                  </li>
+                  <div className='element-container'>
+                    <li key={index}>
+                      <ListElement characterObject={element} turnActive={false} />
+                    </li>
+                    <button className='delete-btn'><img src={deleteIcon} alt="" onClick={() => handleDeleteElement(index)} /></button>
+                  </div>
                 )
               }
             }
             )}
           </ol>
-        </div>
-      </div>
+        </div >
+      </div >
 
     </>
   )

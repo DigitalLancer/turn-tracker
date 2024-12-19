@@ -9,6 +9,7 @@
     font-weight: bold;
     text-align: center;
     margin: 15px 0;
+    font-size: 2.3em;
 }
 
 .input-container {
@@ -36,6 +37,7 @@
     padding: 8px;
     width: 100%;
     border: none;
+    font-size: 1em;
 }
 
 .button-container {
@@ -50,6 +52,7 @@
     border-radius: 8px;
     border: none;
     margin: 10px 0;
+    font-size: 1em;
     background: #095c6f;
     color: white;
 }
@@ -66,6 +69,7 @@
     font-weight: bold;
     margin-right: 10px;
     background: #0c2c0c;
+    font-size: 1em;
 }
 .next{
     border: 2px solid #5dbe13 ;
@@ -91,6 +95,7 @@
     text-align: center;
     color: rgb(255, 255, 255);
     margin: 20px 0;
+    font-family: "Marcellus", serif;
 }
 li {
     line-height: 32px;
@@ -102,6 +107,7 @@ li::marker{
 .attributes{
     display: grid;
     grid-template-columns: 4fr 1fr 1fr 2fr;
+    margin-right: 40px;
 }
 .attributes h2{
     text-align: center;
@@ -109,4 +115,16 @@ li::marker{
     color: #FFEF82;
     text-decoration: underline;
     display: inline-block;
+    font-family: "Marcellus", serif;;
+}
+.element-container{
+    display: flex;
+    align-items: center;
+}
+.delete-btn{
+    background: transparent;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    border: none;
 }

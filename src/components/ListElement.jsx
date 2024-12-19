@@ -1,7 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './listElement.css'
 function ListElement(props) {
     const character = props.characterObject;
+
+    const [name,setName]=useState(character.name);
+    const [hp,setHp]=useState(character.hp);
+    const[ac,setAc]=useState(character.ac);
+    const [initiative,setInitiative]=useState(character.initiative)
+
+    function handleNameChange(event){
+        setName(event.target.value);
+    }
+    function handleHpChange(event){
+        setHp(event.target.value)
+    }
+    function handleAcChange(event){
+        setAc(event.target.value)
+    }
+    function handleInitChange(event){
+        setInitiative(event.target.value)
+    }
 
     /*return (
         <div className='list-element'>

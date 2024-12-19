@@ -8,10 +8,12 @@ html {
   padding: 0;
   box-sizing: border-box;
 }
-
 body{
-  background: rgb(21, 79, 21);
+  min-height: 100%;
   background: radial-gradient(#154f15,#0c2c0c);
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Ensures the gradient stays consistent */
+  background-size: cover;
 }
 *:focus {
   outline: 2px solid rgb(255, 255, 255);
