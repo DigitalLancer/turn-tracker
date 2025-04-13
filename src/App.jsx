@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import ListElement from './components/ListElement'
 import deleteIcon from './images/delete_icon.svg'
@@ -13,6 +11,8 @@ function App() {
   const [ac, setAc] = useState("");
   const [turn, setTurn] = useState(0);
   const [round, setRound] = useState(1);
+  
+  //Karakter submit statlarının belirlenmesi
   function handleSetName(event) {
     setName(event.target.value)
   }
@@ -35,6 +35,7 @@ function App() {
     console.log("character added")
     console.log(elements)
   }
+
   function handleNextTurn() {
     if (elements.length > 0) {
       if (turn < elements.length - 1) {
@@ -49,6 +50,7 @@ function App() {
       alert("Please add a character first");
     }
   }
+
   function handeBackTurn() {
     if (turn > 0) {
       setTurn(turn - 1);

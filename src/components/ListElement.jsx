@@ -21,14 +21,7 @@ function ListElement(props) {
         setInitiative(event.target.value)
     }
 
-    /*return (
-        <div className='list-element'>
-            <p className='element-attribute'>{character.name}</p>
-            <p className='element-attribute'>{character.hp}</p>
-            <p className='element-attribute'>{character.ac}</p>
-            <p className='element-attribute'>{character.initiative}</p>
-        </div>
-    )*/
+
     if (props.turnActive) {
         return (
             <div className='list-element '>
