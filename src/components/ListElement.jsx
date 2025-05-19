@@ -1,47 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import './listElement.css'
+import deleteIcon from '../images/delete_icon.svg'
 function ListElement(props) {
     const character = props.characterObject;
 
-    const [name,setName]=useState(character.name);
-    const [hp,setHp]=useState(character.hp);
-    const[ac,setAc]=useState(character.ac);
-    const [initiative,setInitiative]=useState(character.initiative)
-
-    function handleNameChange(event){
-        setName(event.target.value);
+    const handleNameChange=(event)=>{
+        console.log(event);
+        const newName=event.target.value;
+        props.handleChange(character.id, "name",newName);
     }
-    function handleHpChange(event){
-        setHp(event.target.value)
+    const handleHPChange=(event)=>{
+        const newHP=event.target.value;
+        props.handleChange(character.id, "hp",newHP);
     }
-    function handleAcChange(event){
-        setAc(event.target.value)
-    }
-    function handleInitChange(event){
-        setInitiative(event.target.value)
+    const handleACChange=(event)=>{
+        const newAC=event.target.value;
+        props.handleChange(character.id,"ac",newAC);
     }
 
-
-    if (props.turnActive) {
         return (
             <div className='list-element '>
-                <input className='element-attribute active' type="text" value={character.name}/>
-                <input className='element-attribute active' type="text" value={character.hp}/>
-                <input className='element-attribute active' type="text" value={character.ac}/>
-                <input className='element-attribute active' type="text" value={character.initiative}/>
+                <input className={`element-attribute ${props.turnActive ? 'active' : ''}`} type="text" value={character.name} onChange={handleNameChange}/>
+                <input className={`element-attribute ${props.turnActive ? 'active' : ''}`} type="text" value={character.hp} onChange={handleHPChange}/>
+                <input className={`element-attribute ${props.turnActive ? 'active' : ''}`} type="text" value={character.ac} onChange={handleACChange}/>
+                <input className={`element-attribute ${props.turnActive ? 'active' : ''}`} type="text" value={character.initiative} readOnly/>
+                <button className='delete-btn'><img src={deleteIcon} alt="" onClick={() => props.handleDelete(character.id)} /></button>
             </div>
         )
-    }
-    else {
-        return (
-            <div className='list-element'>
-                <input className='element-attribute' type="text" value={character.name}/>
-                <input className='element-attribute' type="text" value={character.hp}/>
-                <input className='element-attribute' type="text" value={character.ac}/>
-                <input className='element-attribute' type="text" value={character.initiative}/>
-            </div>
-        )
-    }
+    
+
 
 }
 

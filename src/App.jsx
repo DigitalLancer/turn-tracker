@@ -5,14 +5,19 @@ import deleteIcon from './images/delete_icon.svg'
 
 function App() {
   const [elements, setElements] = useState([]);
+
+  //id için karakter sayısını kaydet
+  const [idIndex, setIdIndex] = useState(0);
+
+  //Temel attributelar
   const [name, setName] = useState('');
   const [initative, setInitiative] = useState("");
   const [hp, setHp] = useState("");
   const [ac, setAc] = useState("");
   const [turn, setTurn] = useState(0);
   const [round, setRound] = useState(1);
-  
-  //Karakter submit statlarının belirlenmesi
+
+  //Karakter submit edildiğinde statlarının güncelle
   function handleSetName(event) {
     setName(event.target.value)
   }
@@ -26,15 +31,25 @@ function App() {
     setAc(event.target.value)
   }
   function handleAddCharacter(event) {
-    const newCharacter = { name: name, initiative: initative, hp: hp, ac: ac }
-    setElements(e => [...e, newCharacter]);
-    setName("");
-    setHp("");
-    setInitiative("");
-    setAc("");
-    console.log("character added")
-    console.log(elements)
+    const newCharacter = { name: name, initiative: initative, hp: hp, ac: ac, id: idIndex }//yeni karakter objesi oluştur
+    setElements(prev => [...prev, newCharacter]);
+    setIdIndex(idIndex + 1);
+
+    //reset input field
+    setName('');
+    setAc('');
+    setHp('');
+    setInitiative('');
   }
+
+  //Karakter özelliklerini update etme
+  const handleUpdateAttr = (id, key, value) => {
+    setElements(prevElements =>
+      prevElements.map(character =>
+        character.id === id ? { ...character, [key]: value } : character
+      )
+    );
+  };
 
   function handleNextTurn() {
     if (elements.length > 0) {
@@ -50,12 +65,12 @@ function App() {
       alert("Please add a character first");
     }
   }
-
   function handeBackTurn() {
     if (turn > 0) {
       setTurn(turn - 1);
     }
   }
+
   function sortElements() {
     const newArray = [...elements].sort((a, b) => b.initiative - a.initiative);
     setElements(newArray);
@@ -65,9 +80,8 @@ function App() {
     setElements([]);
     setRound(1);
   }
-  function handleDeleteElement(index) {
-    const newList = elements.filter((element, i) => i !== index);
-    setElements(newList);
+  function handleDeleteElement(id) {
+    setElements(elements.filter(element => element.id !== id));
   }
 
   return (
@@ -111,22 +125,16 @@ function App() {
             {elements.map((element, index) => {
               if (index == turn) {
                 return (
-                  <div className="element-container">
-                    <li key={index}>
-                      <ListElement characterObject={element} turnActive={true} />
-                    </li>
-                    <button className='delete-btn'><img src={deleteIcon} alt="" onClick={() => handleDeleteElement(index)} /></button>
-                  </div>
+                  <li key={element.id}>
+                    <ListElement characterObject={element} turnActive={true} handleChange={handleUpdateAttr} handleDelete={handleDeleteElement} />
+                  </li>
                 )
               }
               else {
                 return (
-                  <div className='element-container'>
-                    <li key={index}>
-                      <ListElement characterObject={element} turnActive={false} />
-                    </li>
-                    <button className='delete-btn'><img src={deleteIcon} alt="" onClick={() => handleDeleteElement(index)} /></button>
-                  </div>
+                  <li key={element.id}>
+                    <ListElement characterObject={element} turnActive={false} handleChange={handleUpdateAttr} handleDelete={handleDeleteElement} />
+                  </li>
                 )
               }
             }

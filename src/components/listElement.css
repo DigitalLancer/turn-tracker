@@ -1,10 +1,9 @@
 .list-element{
     width: 100%;
-    background: rgb(145, 145, 145);
     border-radius: 8px;
     margin: 10px 0;
     display: grid;
-    grid-template-columns: 4fr 1fr 1fr 2fr;
+    grid-template-columns: 4fr 1fr 1fr 2fr 0.5fr;
     text-align: center;
     gap: 2px;
     
@@ -21,4 +20,12 @@
 }
 .active{
     background: rgb(203, 177, 5);
+}
+
+.delete-btn{
+    background: transparent;
+    width: 100%;
+    height: auto;
+    border: none;
+    cursor: pointer;
 }

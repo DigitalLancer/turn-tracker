@@ -55,13 +55,16 @@
     font-size: 1em;
     background: #095c6f;
     color: white;
+    cursor: pointer;
 }
 .list {
     padding: 20px 10px;
+    width: 100%;
 }
 .control-buttons{
     display: flex;
     justify-content: space-between;
+    
 }
 .control-btn{
     padding: 5px 10px;
@@ -70,6 +73,7 @@
     margin-right: 10px;
     background: #0c2c0c;
     font-size: 1em;
+    cursor: pointer;
 }
 .next{
     border: 2px solid #5dbe13 ;
@@ -106,8 +110,10 @@ li::marker{
 }
 .attributes{
     display: grid;
-    grid-template-columns: 4fr 1fr 1fr 2fr;
-    margin-right: 40px;
+    width: 100%;
+    grid-template-columns: 4fr 1fr 1fr 2fr 0.5fr;
+    /*margin-right: 40px;*/
+    gap: 2px;
 }
 .attributes h2{
     text-align: center;
@@ -120,11 +126,15 @@ li::marker{
 .element-container{
     display: flex;
     align-items: center;
+    display: grid;
+    grid-template-columns: 8fr 0.5fr;
 }
-.delete-btn{
-    background: transparent;
-    width: 30px;
-    height: 30px;
-    margin-left: 10px;
-    border: none;
+
+@media screen and (max-width:768px){
+    .container {
+        padding: 25px 15px;
+    }
+    .attributes h2{
+        font-size: 1rem;
+    }
 }
